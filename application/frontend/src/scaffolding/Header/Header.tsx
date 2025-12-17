@@ -68,11 +68,10 @@ export const Header = () => {
 
               <NavLink to="/explorer" className="nav-link" activeClassName="nav-link--active">
                 Explorer
-              </a>
+              </NavLink>
               <Link to="/myopencre" className="nav-link">
                 MyOpenCRE
-              </NavLink>
-              
+              </Link>
             </div>
 
             <div>
@@ -190,7 +189,7 @@ export const Header = () => {
             onClick={closeMobileMenu}
           >
             Explorer
-          </a>
+          </NavLink>
           <a href="/myopencre" className="nav-link" onClick={MyOpenCRE}>
             MyOpenCRE
           </a>
