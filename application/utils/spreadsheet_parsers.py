@@ -155,10 +155,10 @@ def validate_import_csv_rows(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]
     if not any(h.startswith("CRE") for h in headers):
         raise ValueError("At least one CRE column is required")
 
-    required_columns = ["standard|name", "standard|id"]
-    for col in required_columns:
-        if col not in headers:
-            raise ValueError(f"Missing required column: {col}")
+    has_standard_name = any(h.endswith("|name") for h in headers)
+    has_standard_id = any(h.endswith("|id") for h in headers)
+    if not has_standard_name or not has_standard_id:
+        raise ValueError("Missing required standard|name or standard|id columns")
 
     validated_rows = []
     errors = []
@@ -180,10 +180,6 @@ def validate_import_csv_rows(rows: List[Dict[str, Any]]) -> List[Dict[str, Any]]
             continue
 
         cre_values = [v for k, v in normalized.items() if k.startswith("CRE") and v]
-
-        # rows without CRE mappings are allowed → skip
-        if not cre_values:
-            continue
 
         for cre in cre_values:
             if "|" not in cre:
