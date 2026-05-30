@@ -1,0 +1,149 @@
+[
+  {
+    "id": "gold:asvs:V2.1.1:explicit",
+    "schema_version": "0.1.0",
+    "slice": "explicit",
+    "input": {
+      "text": "This control maps to CRE 764-507. Verify that user-set passwords are at least 12 characters in length.",
+      "title_hint": "Password Security",
+      "explicit_cre_ref": "764-507",
+      "source_standard": "ASVS"
+    },
+    "expected": { "decision": "linked", "cre_ids": ["764-507"] },
+    "provenance": {
+      "standard_version": "4.0",
+      "section_path": "V2.1.1",
+      "ground_truth_source": "seed placeholder; full set lands in week_1-3"
+    }
+  },
+  {
+    "id": "gold:asvs:V3.4.1:explicit",
+    "schema_version": "0.1.0",
+    "slice": "explicit",
+    "input": {
+      "text": "See CRE 311-369 for guidance. Verify that cookie-based session tokens have the Secure attribute set.",
+      "explicit_cre_ref": "311-369",
+      "source_standard": "ASVS"
+    },
+    "expected": { "decision": "linked", "cre_ids": ["311-369"] },
+    "provenance": {
+      "section_path": "V3.4.1",
+      "ground_truth_source": "seed placeholder; full set lands in week_1-3"
+    }
+  },
+  {
+    "id": "gold:asvs:V2.2.1:positive",
+    "schema_version": "0.1.0",
+    "slice": "positive",
+    "input": {
+      "text": "Verify that anti-automation controls are effective at mitigating breached credential testing, brute force, and account lockout attacks.",
+      "title_hint": "General Authenticator Security",
+      "source_standard": "ASVS"
+    },
+    "expected": { "decision": "linked", "cre_ids": ["230-376"] },
+    "provenance": {
+      "section_path": "V2.2.1",
+      "ground_truth_source": "seed placeholder; full set lands in week_1-3"
+    }
+  },
+  {
+    "id": "gold:wstg:auth:positive",
+    "schema_version": "0.1.0",
+    "slice": "positive",
+    "input": {
+      "text": "Testing for weak lockout mechanisms: confirm the application locks accounts after a defined number of failed login attempts.",
+      "source_standard": "WSTG"
+    },
+    "expected": { "decision": "linked", "cre_ids": ["230-376"] },
+    "provenance": {
+      "ground_truth_source": "seed placeholder; full set lands in week_1-3"
+    }
+  },
+  {
+    "id": "gold:asvs:V2.4.1:hard_negative",
+    "schema_version": "0.1.0",
+    "slice": "hard_negative",
+    "input": {
+      "text": "Do NOT use MD5 for password hashing; it is cryptographically broken for this purpose.",
+      "title_hint": "Credential Storage",
+      "source_standard": "ASVS"
+    },
+    "expected": { "decision": "linked", "cre_ids": ["598-925"] },
+    "provenance": {
+      "section_path": "V2.4.1",
+      "ground_truth_source": "seed placeholder; negation case (cross-encoder must beat cosine here)"
+    }
+  },
+  {
+    "id": "gold:asvs:V2.4.2:hard_negative",
+    "schema_version": "0.1.0",
+    "slice": "hard_negative",
+    "input": {
+      "text": "Verify that the salt is at least 32 bits and chosen arbitrarily to minimize salt value collisions among stored hashes.",
+      "source_standard": "ASVS"
+    },
+    "expected": { "decision": "linked", "cre_ids": ["598-925"] },
+    "provenance": {
+      "section_path": "V2.4.2",
+      "ground_truth_source": "seed placeholder; lexically-near distractor case"
+    }
+  },
+  {
+    "id": "gold:asvs:V2.1.1:update",
+    "schema_version": "0.1.0",
+    "slice": "update",
+    "input": {
+      "text": "Verify that user-set passwords are at least 12 characters in length after removing leading and trailing spaces.",
+      "prior_text": "Verify that user-set passwords are at least 12 characters in length.",
+      "source_standard": "ASVS"
+    },
+    "expected": { "decision": "linked", "cre_ids": ["764-507"], "is_update": true },
+    "provenance": {
+      "section_path": "V2.1.1",
+      "ground_truth_source": "seed placeholder; update of an existing mapped control"
+    }
+  },
+  {
+    "id": "gold:asvs:V3.4.1:update",
+    "schema_version": "0.1.0",
+    "slice": "update",
+    "input": {
+      "text": "Verify that cookie-based session tokens have the Secure and SameSite attributes set.",
+      "prior_text": "Verify that cookie-based session tokens have the Secure attribute set.",
+      "source_standard": "ASVS"
+    },
+    "expected": { "decision": "linked", "cre_ids": ["311-369"], "is_update": true },
+    "provenance": {
+      "section_path": "V3.4.1",
+      "ground_truth_source": "seed placeholder; additive update of an existing mapping"
+    }
+  },
+  {
+    "id": "gold:asvs:V1.1.1:ambiguous",
+    "schema_version": "0.1.0",
+    "slice": "ambiguous",
+    "input": {
+      "text": "Verify the use of a secure software development lifecycle that addresses security in all stages of development.",
+      "title_hint": "Secure SDLC",
+      "source_standard": "ASVS"
+    },
+    "expected": { "decision": "review", "reason_code": "BELOW_THRESHOLD" },
+    "provenance": {
+      "section_path": "V1.1.1",
+      "ground_truth_source": "seed placeholder; broad statement with no single clear CRE target"
+    }
+  },
+  {
+    "id": "gold:other:misc:ambiguous",
+    "schema_version": "0.1.0",
+    "slice": "ambiguous",
+    "input": {
+      "text": "Security is everyone's responsibility and should be considered throughout the organization.",
+      "source_standard": "OTHER"
+    },
+    "expected": { "decision": "review", "reason_code": "NO_CANDIDATES" },
+    "provenance": {
+      "ground_truth_source": "seed placeholder; non-actionable content, expected to route to review"
+    }
+  }
+]
